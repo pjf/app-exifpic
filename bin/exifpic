@@ -1,0 +1,9 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use App::Exifpic;
+
+# PODNAME: exifpic
+# VERSION
+
+exit App::Exifpic->run(@ARGV);
