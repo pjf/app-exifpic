@@ -84,11 +84,7 @@ sub process_image {
 
     my $exiftool = Image::ExifTool->new;
 
-    my $exif = $exiftool->ImageInfo($raw, [qw(PreviewImage Orientation)], { Binary => 1 });
-
-    my ($rotation) = ( $exif->{Orientation} =~ /(\d+)/ );
-
-    $rotation ||= 0;
+    my $exif = $exiftool->ImageInfo($raw, [qw(PreviewImage)], { Binary => 1 });
 
     my $img = Imager->new();
     $img->read(data => ${$exif->{PreviewImage}})
@@ -96,7 +92,6 @@ sub process_image {
 
     $img
         ->scale(type=>'min', xpixels=>2048, ypixels=>2048)
-        ->rotate(degrees => $rotation)
         ->write(file=>$new, type=>'jpeg', jpegquality=>100)
     ;
 

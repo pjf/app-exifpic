@@ -24,6 +24,9 @@ will always have the same name as the old file, but with a .jpg extension.
 The code will use as many cores as you have available, and assumes you're
 running a threaded perl.
 
+The code will always scale pictures so the longest side is 2048px or less.
+A patch to allow users to select sizes would be great. :)
+
 =head1 BUGS
 
 Plenty! The code assumes you have a F</proc/cpuinfo> so it can count
